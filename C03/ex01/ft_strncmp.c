@@ -1,47 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_non_printable.c                          :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ykhaldou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/20 09:32:07 by ykhaldou          #+#    #+#             */
-/*   Updated: 2026/07/20 13:16:59 by ykhaldou         ###   ########.fr       */
+/*   Created: 2026/07/20 11:38:32 by ykhaldou          #+#    #+#             */
+/*   Updated: 2026/07/20 11:44:29 by ykhaldou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_hexa(char c)
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	int	div;
-	int	mod;
-	char	*hex;
+	int	val;
+	unsigned int	i;
 
-	hex = "0123456789abcdef";
-	div = c / 16;
-	mod = c % 16;
-	write(1, "\\", 1);
-	write(1, &hex[div], 1);
-	write(1, &hex[mod], 1);
-}
-
-void	ft_putstr_non_printable(char *str)
-{
-	int	i;
-
+	val = 0;
 	i = 0;
-	while (str[i])
+	while ((s1[i] || s2[i]) && i < n)
 	{
-		if(str[i] < 32 || str[i] > 126)
-			ft_hexa(str[i]);
-		else
-			write(1, &str[i], 1);
+		val = s1[i] - s2[i];
+		if (val != 0)
+			return (val);
 		i++;
 	}
-}
-
-int	main(void)
-{
-	ft_putstr_non_printable("hala\n\t\t\t\nthere   ??");
+	return (val);
 }

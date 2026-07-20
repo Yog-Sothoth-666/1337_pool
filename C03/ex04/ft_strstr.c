@@ -1,47 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_non_printable.c                          :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ykhaldou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/20 09:32:07 by ykhaldou          #+#    #+#             */
-/*   Updated: 2026/07/20 13:16:59 by ykhaldou         ###   ########.fr       */
+/*   Created: 2026/07/20 14:38:51 by ykhaldou          #+#    #+#             */
+/*   Updated: 2026/07/20 17:45:35 by ykhaldou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_hexa(char c)
+int	ft_strcmp(char *s1, char *to_find)
 {
-	int	div;
-	int	mod;
-	char	*hex;
+	int	val;
 
-	hex = "0123456789abcdef";
-	div = c / 16;
-	mod = c % 16;
-	write(1, "\\", 1);
-	write(1, &hex[div], 1);
-	write(1, &hex[mod], 1);
+	val = 0;
+	while (*to_find)
+	{
+		val = *s1 - *to_find;
+		if (val != 0)
+			return (0);
+		s1++;
+		to_find++;
+	}
+	return (1);
 }
 
-void	ft_putstr_non_printable(char *str)
+char	*ft_strstr(char *str, char *to_find)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (*str)
 	{
-		if(str[i] < 32 || str[i] > 126)
-			ft_hexa(str[i]);
-		else
-			write(1, &str[i], 1);
-		i++;
+		if (ft_strcmp(str, to_find))
+			return (str);
+		str++;
 	}
-}
-
-int	main(void)
-{
-	ft_putstr_non_printable("hala\n\t\t\t\nthere   ??");
+	return (NULL);
 }
