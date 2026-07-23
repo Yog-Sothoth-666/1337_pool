@@ -6,11 +6,11 @@
 /*   By: ykhaldou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 14:00:30 by ykhaldou          #+#    #+#             */
-/*   Updated: 2026/07/18 14:28:41 by ykhaldou         ###   ########.fr       */
+/*   Updated: 2026/07/22 11:44:37 by ykhaldou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_uppercase(char *str)
+int	ft_str_is_uppercase(char *str)
 {
 	while (*str)
 	{

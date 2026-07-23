@@ -6,13 +6,13 @@
 /*   By: ykhaldou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 11:28:22 by ykhaldou          #+#    #+#             */
-/*   Updated: 2026/07/20 10:39:30 by ykhaldou         ###   ########.fr       */
+/*   Updated: 2026/07/21 09:32:44 by ykhaldou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strcpy(char *dest, char *src)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (src[i])
