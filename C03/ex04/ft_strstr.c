@@ -6,36 +6,40 @@
 /*   By: ykhaldou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/20 14:38:51 by ykhaldou          #+#    #+#             */
-/*   Updated: 2026/07/20 17:45:35 by ykhaldou         ###   ########.fr       */
+/*   Updated: 2026/07/25 11:59:59 by ykhaldou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(char *s1, char *to_find)
-{
-	int	val;
+#include <unistd.h>
 
-	val = 0;
-	while (*to_find)
-	{
-		val = *s1 - *to_find;
-		if (val != 0)
-			return (0);
-		s1++;
-		to_find++;
-	}
-	return (1);
+int     ft_strlen(char  *str)
+{
+        int     i;
+
+        i = 0;
+        while (str[i])
+                i++;
+        return (i);
 }
 
-char	*ft_strstr(char *str, char *to_find)
+char    *ft_strstr(char *str, char      *to_find)
 {
-	int	i;
+        int     i;
+        int     length;
+        int     j;
 
-	i = 0;
-	while (*str)
-	{
-		if (ft_strcmp(str, to_find))
-			return (str);
-		str++;
-	}
-	return (NULL);
+        length = ft_strlen(to_find);
+        i = 0;
+        if (to_find[0] == '\0')
+                return (str);
+        while (str[i])
+        {
+                j = 0;
+                while (j < length && str[i + j] == to_find[j])
+                        j++;
+                if (j == length)
+                        return (&str[i]);
+                i++;
+        }
+        return (NULL);
 }
