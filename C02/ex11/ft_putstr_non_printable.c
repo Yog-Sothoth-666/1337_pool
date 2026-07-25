@@ -6,7 +6,7 @@
 /*   By: ykhaldou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/20 09:32:07 by ykhaldou          #+#    #+#             */
-/*   Updated: 2026/07/23 08:58:18 by ykhaldou         ###   ########.fr       */
+/*   Updated: 2026/07/25 11:13:35 by ykhaldou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,11 @@
 void	ft_hexa(unsigned char c)
 {
 	char	hex[];
-	int		div;
-	int		mod;
 
 	hex = "0123456789abcdef";
-	div = c / 16;
-	mod = c % 16;
 	write(1, "\\", 1);
-	write(1, &hex[div], 1);
-	write(1, &hex[mod], 1);
+	write(1, &hex[c / 16], 1);
+	write(1, &hex[c % 16], 1);
 }
 
 void	ft_putstr_non_printable(char *str)

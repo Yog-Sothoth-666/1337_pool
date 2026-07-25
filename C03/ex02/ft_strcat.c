@@ -6,7 +6,7 @@
 /*   By: ykhaldou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/20 13:31:35 by ykhaldou          #+#    #+#             */
-/*   Updated: 2026/07/20 13:57:53 by ykhaldou         ###   ########.fr       */
+/*   Updated: 2026/07/25 10:12:49 by ykhaldou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,9 @@ char	*ft_strcat(char *dest, char *src)
 
 	i = 0;
 	while(dest[i])
-	{
 		i++;
-	}
 	while(*src)
-	{
-		dest[i] = *str;
-		i++;
-		str++;
-	}
+		dest[i++] = *src++;
 	dest[i] = '\0';
-	retuen (dest);
+	return (dest);
 }
