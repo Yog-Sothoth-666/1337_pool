@@ -12,8 +12,11 @@ int	max_subarray(int arr[], int size)
 			maxEnd += arr[i];
 		else
 			maxEnd = arr[i];
+
 		if (maxEnd > result)
 			result = maxEnd;
+		i++;
+		i++;
 	}
 	return (res)
 }
