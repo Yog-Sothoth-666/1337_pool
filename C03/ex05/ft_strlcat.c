@@ -6,7 +6,7 @@
 /*   By: ykhaldou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/26 10:35:00 by ykhaldou          #+#    #+#             */
-/*   Updated: 2026/07/26 11:21:42 by ykhaldou         ###   ########.fr       */
+/*   Updated: 2026/07/26 11:54:15 by ykhaldou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 		return (size + s_len);
 	if (d_len + s_len >= size)
 		return (d_len + s_len);
-	if (size <= 0)
+	if (size = 0)
 		return (d_len + s_len);
 	i = d_len;
 	j = 0;
