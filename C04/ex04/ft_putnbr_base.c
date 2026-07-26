@@ -6,7 +6,7 @@
 /*   By: ykhaldou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 10:31:50 by ykhaldou          #+#    #+#             */
-/*   Updated: 2026/07/25 11:01:54 by ykhaldou         ###   ########.fr       */
+/*   Updated: 2026/07/26 11:47:45 by ykhaldou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,4 @@ void	ft_putnbr_base(int nbr, char *base)
 			nb = nbr;
 		ft_putnb(nb, len, base);
 	}
-}
-
-int main()
-{
-	ft_putnbr_base(77, "0123456789abcdef");
 }

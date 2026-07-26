@@ -1,40 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   w_ft_atoi.c                                        :+:      :+:    :+:   */
+/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ykhaldou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/21 10:07:38 by ykhaldou          #+#    #+#             */
-/*   Updated: 2026/07/21 10:34:01 by ykhaldou         ###   ########.fr       */
+/*   Created: 2026/07/25 13:18:07 by ykhaldou          #+#    #+#             */
+/*   Updated: 2026/07/25 13:31:27 by ykhaldou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(char *str)
+#include <stdio.h>
+int ft_recursive_factorial(int nb)
 {
-	int	n;
-	int	s;
+	if (nb == 1)
+		return (1);
+	else if (nb <= 0)
+		return (0);
+	return (nb * ft_recursive_factorial(nb -1));
+}
 
-	s = 1;
-	n = 0;
-	while (*str)
-	{
-		if (*str == '-')
-			s *= -1;
-		else if (*str == ' ' || *str == '+')
-		{
-			str++;
-			continue ;
-		}
-		else if (*str < '0' || *str > '9')
-			break ;
-		else
-		{
-			n *= 10;
-			n += *str - '0';
-		}
-		str++;
-	}
-	n *= s;
-	return (n);
+int main()
+{
+	printf("%d", ft_recursive_factorial(4));
 }
