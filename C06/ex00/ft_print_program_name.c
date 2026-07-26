@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp_alt.c                                    :+:      :+:    :+:   */
+/*   ft_print_program_name.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ykhaldou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/20 19:01:45 by ykhaldou          #+#    #+#             */
-/*   Updated: 2026/07/26 13:17:49 by ykhaldou         ###   ########.fr       */
+/*   Created: 2026/07/26 11:53:16 by ykhaldou          #+#    #+#             */
+/*   Updated: 2026/07/26 12:01:09 by ykhaldou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(char *s1, char *s2)
+#include <unistd.h>
+
+int	main(int argc, char **argv)
 {
-	while (*s1 == *s2 && *s1 && *s2)
-	{
-		s1++;
-		s2++;
-	}
-	return (*s1 - *s2);
+	int i;
+
+	i = 0;
+
+	while (argv[0][i])
+		write(1, &argv[0][i++], 1);
+	return (argc);
 }

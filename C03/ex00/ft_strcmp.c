@@ -5,23 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ykhaldou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/20 11:38:32 by ykhaldou          #+#    #+#             */
-/*   Updated: 2026/07/20 11:41:17 by ykhaldou         ###   ########.fr       */
+/*   Created: 2026/07/20 19:01:45 by ykhaldou          #+#    #+#             */
+/*   Updated: 2026/07/25 12:12:11 by ykhaldou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_strcmp(char *s1, char *s2)
 {
-	int	val;
-
-	val = 0;
-	while (*s1 || *s2)
+	while (*s1 == *s2 && *s1 && *s2)
 	{
-		val = *s1 - *s2;
-		if (val != 0)
-			return (val);
 		s1++;
 		s2++;
 	}
-	return (val);
+	return (*s1 - *s2);
 }
