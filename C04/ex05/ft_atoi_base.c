@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ykhaldou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/25 10:31:50 by ykhaldou          #+#    #+#             */
-/*   Updated: 2026/07/27 14:23:16 by ykhaldou         ###   ########.fr       */
+/*   Created: 2026/07/27 12:34:23 by ykhaldou          #+#    #+#             */
+/*   Updated: 2026/07/27 14:06:26 by ykhaldou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
 
 int	ft_base(char *base)
 {
@@ -37,32 +37,52 @@ int	ft_base(char *base)
 		return (i);
 }
 
-void	ft_putc(char c)
+int	ft_isbase(char c, char *base)
 {
-	write(1, &c, 1);
+	int i;
+
+	i = 0;
+	while (base[i])
+	{
+		if (c == base[i])
+			return (i);
+		i++;
+	}
+	return (-1);
 }
 
-void	ft_putnb(long nb, int len, char *base)
+int	ft_atoi_base(char *str, char *base)
 {
-	if (nb >= len)
-		ft_putnb(nb / len, len, base);
-	ft_putc(base[nb % len]);
-}
+	int	n;
+	int	s;
+	int len;
 
-void	ft_putnbr_base(int nbr, char *base)
-{
-	int		len;
-	long	nb;
-
+	n = 0;
+	s = 1;
 	len = ft_base(base);
 	if (len)
 	{
-		nb = nbr;
-		if (nb < 0)
+		while (*str == ' ' || (*str >= '\t' && *str <= '\r' ))
+			str++;
+		while (*str == '-' || *str == '+')
 		{
-			ft_putc('-');
-			nb *= -1;
+			if (*str == '-')
+				s *= -1;
+			str++;
 		}
-		ft_putnb(nb, len, base);
+		while (*str &&  ft_isbase(*str, base) != -1)
+		{
+			n *= len;
+			n += ft_isbase(*str++, base);
+		}
+		return (n * s);
 	}
+	return (0);
 }
+
+/*
+int main()
+{
+	printf("%d", ft_atoi_base("   +--++-+--3DB+i", "0123456789ABCDEF"));
+}
+*/
