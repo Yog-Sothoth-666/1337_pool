@@ -49,7 +49,7 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 
 	i = 0;
 	sep_l = ft_strlen(sep);
-	str_l = ft_size (size, strs, sep);
+	str_l = ft_size(size, strs, sep);
 	str = malloc(str_l + 1);
 	if (!(str))
 		return (NULL);
