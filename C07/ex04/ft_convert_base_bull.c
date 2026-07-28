@@ -19,28 +19,33 @@ int	ft_index(char c, char *base);
 
 int	ft_atoi_base(char *str, char *base);
 
-int	ft_digitnum(long n, int len);
-
-char	*ft_itos(int i, long n, int len, char *base_to);
+int	ft_digitnum(int n, int len);
 
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
 	int		i;
 	char	*str;
-	long	n;
 	int		len;
+	int		n;
 
+	i = 0;
 	n = ft_atoi_base(nbr, base_from);
 	len = ft_base(base_to);
-	i = 0;
-	if (n < 0)
+	if (len)
 	{
-		n *= -1;
-		i += 1;
+		i = ft_digitnum(n, len);
+		str = malloc(i + 1);
+		str[i--] = '\0';
+		while (n)
+		{
+			str[i--] = base_to[n % len];
+			n /= len;
+		}
+		if (i == 0)
+			str[i] = '-';
+		return (str);
 	}
-	i += ft_digitnum(n, len);
-	str = ft_itos(i, n, len, base_to);
-	return (str);
+	return (NULL);
 }
 
 int	main(void)

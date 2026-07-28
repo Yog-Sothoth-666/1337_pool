@@ -81,10 +81,30 @@ int	ft_digitnum(int n, int len)
 	int	i;
 
 	i = 0;
+	if (n < 0)
+		i++;
 	while (n)
 	{
 		n /= len;
 		i++;
 	}
 	return (i);
+}
+
+char	*ft_itos(int i, long n, int len, char *base_to)
+{
+	char	*str;
+
+	str = malloc(i + 1);
+	if (!str)
+		return (NULL);
+	str[i--] = '\0';
+	while (n)
+	{
+		str[i--] = base_to[n % len];
+		n /= len;
+	}
+	if (i == 0)
+		str[i] = '-';
+	return (str);
 }
