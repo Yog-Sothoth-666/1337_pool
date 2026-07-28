@@ -15,11 +15,11 @@
 
 int	ft_base(char *base);
 
-int	ft_index(char c, char *base);
+int		ft_index(char c, char *base);
 
-int	ft_atoi_base(char *str, char *base);
+int		ft_atoi_base(char *str, char *base);
 
-int	ft_digitnum(long n, int len);
+int		ft_digitnum(long n, int len);
 
 char	*ft_itos(int i, long n, int len, char *base_to);
 
