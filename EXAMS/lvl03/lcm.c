@@ -2,7 +2,7 @@
 
 unsigned int	hcf(unsigned int x, unsigned int y)
 {
-	int i = 0;
+	unsigned int i = 0;
 	if (x > y)
 		i = y;
 	else
@@ -18,7 +18,7 @@ unsigned int	hcf(unsigned int x, unsigned int y)
 
 unsigned int	lcm(unsigned int x, unsigned int y)
 {
-	int i = 0;
+	unsigned int i = 0;
 	if (x > y)
 		i = x;
 	else
