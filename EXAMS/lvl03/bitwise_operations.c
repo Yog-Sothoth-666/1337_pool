@@ -46,5 +46,5 @@ unsigned char	swap_bits(unsigned char bit)
 
 int main()
 {
-	swap_bits(197);
+	reverse_bits(197);
 }

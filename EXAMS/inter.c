@@ -23,6 +23,7 @@ int	main(int argc, char **argv)
 					{
 						ascii[(unsigned char) argv[1][i]] = 1;
 						write(1, &argv[1][i], 1);
+						break;
 					}
 				}
 				j++;

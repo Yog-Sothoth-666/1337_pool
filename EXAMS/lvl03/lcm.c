@@ -14,6 +14,7 @@ unsigned int	hcf(unsigned int x, unsigned int y)
 			return (i);
 		i--;
 	}
+	return (0);
 }
 
 unsigned int	lcm(unsigned int x, unsigned int y)
@@ -23,16 +24,17 @@ unsigned int	lcm(unsigned int x, unsigned int y)
 		i = x;
 	else
 		i = y;
-	while (i < x * y)
+	while (i <= x * y)
 	{
 		if (i % x == 0 && i % y == 0)
 			return (i);
 		i++;
 	}
+	return (0);
 }
 
 int main()
 {
-	printf("%d", hcf(16, 32));
-	printf("%d", lcm(5, 2))
+	printf("hcf : %u\n", hcf(16, 28));
+	printf("lcm : %u", lcm(2, 5));
 }
