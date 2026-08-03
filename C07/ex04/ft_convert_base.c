@@ -11,7 +11,9 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
+/*
 #include <stdio.h>
+*/
 
 int	ft_base(char *base);
 
@@ -40,10 +42,14 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	}
 	i += ft_digitnum(n, len);
 	str = ft_itos(i, n, len, base_to);
-	return (str);
+	if (!ft_base(base_from) ||!ft_base(base_to))
+		return (NULL);
+	else
+		return (str);
 }
-
+/*
 int	main(void)
 {
 	printf("%s\n", ft_convert_base("-10", "01234567", "0123456789ABCDEF"));
 }
+*/

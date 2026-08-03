@@ -76,7 +76,7 @@ int	ft_atoi_base(char *str, char *base)
 	return (n * s);
 }
 
-int	ft_digitnum(int n, int len)
+int	ft_digitnum(long n, int len)
 {
 	int	i;
 

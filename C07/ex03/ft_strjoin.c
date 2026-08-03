@@ -1,79 +1,85 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_stroin.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhaldou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ykhaldou <ykhaldou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/26 16:04:54 by ykhaldou          #+#    #+#             */
-/*   Updated: 2026/07/27 11:50:20 by ykhaldou         ###   ########.fr       */
+/*   Created: 2026/08/03 11:17:14 by ykhaldou          #+#    #+#             */
+/*   Updated: 2026/08/03 11:57:35 by ykhaldou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdlib.h>
+/*
 #include <stdio.h>
+*/
+#include <stdlib.h>
 
-int	ft_strlen(char *str)
+int	slen(char *str)
 {
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+int	f_size(char **strs, char *sep, int size)
+{
+	int	i;
 	int	len;
 
+	i = 0;
 	len = 0;
-	while (str[len])
-		len++;
+	while (i < size)
+	{
+		len += slen(strs[i++]);
+		if (i != size)
+			len += slen(sep);
+	}
 	return (len);
 }
 
-int	ft_size(int size, char **strs,char *sep)
+int	ft_append(char *dst, char *src, int index)
 {
-	int		str_l;
-	int		i;
+	int	i;
 
 	i = 0;
-	str_l = 0;
-	while (i < size)
-	{
-		str_l += ft_strlen(strs[i++]);
-		if (i < size - 1)
-			str_l += ft_strlen(sep);
-	}
-	return (str_l);
+	while (src[i])
+		dst[index++] = src[i++];
+	return (index);
 }
 
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
 	char	*str;
 	int		i;
-	int		j;
-	int		str_l;
-	int		sep_l;
+	int		k;
+	int		len;
 
-	i = 0;
-	sep_l = ft_strlen(sep);
-	str_l = ft_size(size, strs, sep);
-	str = malloc(str_l + 1);
-	if (!(str))
+	len = f_size(strs, sep, size);
+	str = malloc(len + 1);
+	if (!str)
 		return (NULL);
-	str_l = 0;
+	i = 0;
+	k = 0;
 	while (i < size)
 	{
-		j = 0;
-		while (strs[i][j])
-			str[str_l++] = strs[i][j++];
-		j = 0;
-		while (j < sep_l)
-			str[str_l++] = sep[j++];
-		i++;
+		k = ft_append(str, strs[i++], k);
+		if (i < size)
+			k = ft_append(str, sep, k);
 	}
-	str[str_l] = '\0';
+	str[k] = '\0';
 	return (str);
 }
-
-int	main()
+/*
+int main()
 {
-	char *sep = " ";
-	char *strs[] = {"I", "have", "the", "high", "ground", "Anakin!"};
-	char *str = ft_strjoin(6, strs, sep);
+	char	*strs[] = {"fucked", "you", "are"};
+	char	*sep = ", ";
+	char	*str;
+	str = ft_strjoin(3, strs, sep);
 	printf("%s", str);
 	free(str);
-	return 0;
 }
+*/
