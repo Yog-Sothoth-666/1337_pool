@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ykhaldou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ykhaldou <ykhaldou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/27 16:03:37 by ykhaldou          #+#    #+#             */
-/*   Updated: 2026/07/27 17:01:10 by ykhaldou         ###   ########.fr       */
+/*   Created: 2026/08/03 13:59:46 by ykhaldou          #+#    #+#             */
+/*   Updated: 2026/08/03 14:53:23 by ykhaldou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,42 +14,102 @@
 /*
 #include <stdio.h>
 */
+int	ft_base(char *base)
+{
+	char	asc[256];
+	int		i;
 
-int	ft_base(char *base);
+	i = 0;
+	while (i < 256)
+		asc[i++] = 0;
+	i = 0;
+	while (base[i])
+	{
+		if (base[i] == '+' || base[i] == '-' || base[i] == ' ')
+			return (0);
+		else if (asc[(unsigned char)base[i]] == 1)
+			return (0);
+		else
+			asc[(unsigned char)base[i]] = 1;
+		i++;
+	}
+	if (i <= 1)
+		return (0);
+	return (i);
+}
 
-int		ft_index(char c, char *base);
+int	base_index(char c, char *base)
+{
+	int i;
 
-int		ft_atoi_base(char *str, char *base);
+	i = 0;
+	while (base[i])
+	{
+		if (c == base[i])
+			return (i);
+		i++;
+	}
+	return (-1);
+}
 
-int		ft_digitnum(long n, int len);
+int	ft_atoi_base(char *nbr, char *base)
+{
+	int	n;
+	int	s;
+	int	len;
 
-char	*ft_itos(int i, long n, int len, char *base_to);
+	n = 0;
+	s = 1;
+	len = ft_base(base);
+		while (*nbr == ' ' || (*nbr >= '\t' && *nbr <= '\r'))
+			nbr++;
+		while (*nbr == '+' || *nbr == '-')
+		{
+			if (*nbr == '-')
+				s *= -1;
+			nbr++;
+		}
+		while (base_index(*nbr, base) != -1)
+		{
+			n *= len;
+			n += base_index(*nbr++, base);
+		}
+	return (n * s);
+}
 
-char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
+int	str_size(int n, int len)
 {
 	int		i;
-	char	*str;
-	long	n;
-	int		len;
 
-	n = ft_atoi_base(nbr, base_from);
-	len = ft_base(base_to);
 	i = 0;
 	if (n < 0)
+		i++;
+	while (n)
 	{
-		n *= -1;
-		i += 1;
+		n /= len;
+		i++;
 	}
-	i += ft_digitnum(n, len);
-	str = ft_itos(i, n, len, base_to);
-	if (!ft_base(base_from) ||!ft_base(base_to))
-		return (NULL);
-	else
-		return (str);
+	return (i);
 }
-/*
-int	main(void)
+
+char	*ft_itoa_base(int n, char *base)
 {
-	printf("%s\n", ft_convert_base("-10", "01234567", "0123456789ABCDEF"));
+	int		len;
+	int		i;
+	char	*nbr;
+	
+	len = ft_base(base);
+		i = str_size(n, len);
+		nbr = malloc(i + 1);
+		nbr[i--] = '\0';
+		if (n < 0)
+			n *= -1;
+		while (n)
+		{
+			nbr[i--] = base[n % len];
+			n /= len;
+		}
+		if (i == 0)
+			nbr[i] = '-';
+	return (nbr);
 }
-*/
