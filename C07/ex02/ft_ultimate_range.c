@@ -14,13 +14,13 @@
 
 int	ft_ultimate_range(int **range, int min, int max)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	if (min >= max)
 	{
 		*range = NULL;
-		return (-1);
+		return (0);
 	}
 	else
 	{

@@ -75,7 +75,7 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 /*
 int main()
 {
-	char	*strs[] = {"fucked", "you", "are"};
+	char	*strs[] = {"cooked", "you", "are"};
 	char	*sep = ", ";
 	char	*str;
 	str = ft_strjoin(3, strs, sep);

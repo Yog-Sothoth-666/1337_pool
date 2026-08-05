@@ -25,7 +25,8 @@ int	ft_base(char *base)
 	i = 0;
 	while (base[i])
 	{
-		if (base[i] == '+' || base[i] == '-' || base[i] == ' ')
+		if (base[i] == '+' || base[i] == '-' || base[i] == ' '
+			|| (base[i] >= '\t' && base[i] <= '\r'))
 			return (0);
 		else if (asc[(unsigned char)base[i]] == 1)
 			return (0);
@@ -40,7 +41,7 @@ int	ft_base(char *base)
 
 int	base_index(char c, char *base)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (base[i])
@@ -54,36 +55,43 @@ int	base_index(char c, char *base)
 
 int	ft_atoi_base(char *nbr, char *base)
 {
-	int	n;
-	int	s;
-	int	len;
+	int		n;
+	long	nb;
+	int		s;
+	int		len;
 
-	n = 0;
+	nb = 0;
 	s = 1;
 	len = ft_base(base);
-		while (*nbr == ' ' || (*nbr >= '\t' && *nbr <= '\r'))
-			nbr++;
-		while (*nbr == '+' || *nbr == '-')
-		{
-			if (*nbr == '-')
-				s *= -1;
-			nbr++;
-		}
-		while (base_index(*nbr, base) != -1)
-		{
-			n *= len;
-			n += base_index(*nbr++, base);
-		}
-	return (n * s);
+	while (*nbr == ' ' || (*nbr >= '\t' && *nbr <= '\r'))
+		nbr++;
+	while (*nbr == '+' || *nbr == '-')
+	{
+		if (*nbr == '-')
+			s *= -1;
+		nbr++;
+	}
+	while (base_index(*nbr, base) != -1)
+	{
+		nb *= len;
+		nb += base_index(*nbr++, base);
+	}
+	n = nb * s;
+	return (n);
 }
 
-int	str_size(int n, int len)
+int	str_size(long n, int len)
 {
 	int		i;
 
 	i = 0;
+	if (n == 0)
+		return (1);
 	if (n < 0)
+	{
 		i++;
+		n *= -1;
+	}
 	while (n)
 	{
 		n /= len;
@@ -97,19 +105,25 @@ char	*ft_itoa_base(int n, char *base)
 	int		len;
 	int		i;
 	char	*nbr;
-	
+	long	nb;
+
 	len = ft_base(base);
-		i = str_size(n, len);
-		nbr = malloc(i + 1);
-		nbr[i--] = '\0';
-		if (n < 0)
-			n *= -1;
-		while (n)
-		{
-			nbr[i--] = base[n % len];
-			n /= len;
-		}
-		if (i == 0)
-			nbr[i] = '-';
+	nb = n;
+	i = str_size(nb, len);
+	nbr = malloc(i + 1);
+	if (!nbr)
+		return (NULL);
+	if (nb == 0)
+		nbr[0] = base[0];
+	nbr[i--] = '\0';
+	if (nb < 0)
+		nb *= -1;
+	while (nb)
+	{
+		nbr[i--] = base[nb % len];
+		nb /= len;
+	}
+	if (n < 0)
+		nbr[0] = '-';
 	return (nbr);
 }

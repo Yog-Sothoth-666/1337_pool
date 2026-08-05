@@ -38,6 +38,11 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 /*
 int	main()
 {
-	printf("%s", ft_convert_base("20", "01234567", "0123456789"));
+	// Standard conversions
+	printf("%s\n", ft_convert_base("101010", "01", "0123456789ABCDEF"));
+	printf("%s\n", ft_convert_base("vp", "poneyvif", "0123456789"));
+	printf("%s\n", ft_convert_base("0", "0123456789", "01"));
+	printf("%s\n", ft_convert_base("2147483647", "0123456789", "0123456789abcdef"));
+	printf("%s\n", ft_convert_base("-2147483648", "0123456789", "0123456789"));
 }
 */
